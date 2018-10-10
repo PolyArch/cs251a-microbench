@@ -1,19 +1,16 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<iostream>
-
-using namespace std;
 
 int sieve(int n)  { 
     //source: https://www.geeksforgeeks.org/sieve-of-eratosthenes/
-    bool *notprime = (bool*)malloc(sizeof(bool) * n+1); 
+    char *notprime = (char*)malloc(sizeof(char) * n+1); 
   
     for (int p=2; p*p<=n; p++) { 
         // If prime[p] is not changed, then it is a prime 
-        if (notprime[p] == false) { 
+        if (notprime[p] == 0) { 
             // Update all multiples of p 
             for (int i=p*2; i<=n; i += p) {
-                notprime[i] = true; 
+                notprime[i] = 1; 
             }
         }
     }
