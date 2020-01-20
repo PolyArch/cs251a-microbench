@@ -12,19 +12,11 @@ parser.add_argument('-e','--avg_elem_per_row', default=64, type=int, help='Eleme
 parser.add_argument('-s','--dev_elem_per_row', default=16, type=int, help='Elements in each row')
 
 parser.add_argument('-v','--range', default=96, type=int, help='Upper Bound on Random Value -- 2 for Binary')
-parser.add_argument('-d', '--data_type', default='not_set')
+parser.add_argument('-d', '--data_type', default='float')
 #parser.add_argument('--non_random',action='store_true')
 parser.add_argument('-o','--output', default='spmvArr.h')
 
 args = parser.parse_args()
-
-if args.data_type=='not_set':
-  if args.range==2:
-    args.data_type='float'
-  else:
-    args.data_type='int'
-
-
 
 raw_elem_per_row = np.random.normal(args.avg_elem_per_row,args.dev_elem_per_row,args.rows)
 elem_per_row = [max(0,min(int(x),args.cols-1)) for x in raw_elem_per_row]
@@ -35,6 +27,10 @@ row_delim = np.cumsum(elem_per_row)
 
 
 out_file = open(args.output,'w')
+
+out_file.write("#define N_COLS " + str(args.cols)+"\n")
+out_file.write("#define N_ROWS " + str(args.rows)+"\n")
+out_file.write("#define NNZ " + str(nnz)+"\n")
 
 
 # VAL ARRAY (nnz)

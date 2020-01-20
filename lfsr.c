@@ -13,7 +13,7 @@ silly_struct arr[ASIZE];
 
 __attribute__ ((noinline))
 int lfsr_loop(int zero) {
-  int result = 0, count=0;
+  int result = zero, count=zero;
 
   unsigned lfsr = 0xACE1u;
   do {
@@ -31,6 +31,6 @@ int main(int argc, char* argv[]) {
    int t=lfsr_loop(argc); 
 
    if(argc >=2) {
-     printf("value of t: %d\n",t);
+     printf("value of t: %d, %s\n",t, argv[0]);
    }
 }

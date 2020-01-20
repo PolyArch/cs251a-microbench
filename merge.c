@@ -52,8 +52,6 @@ int main(int argc, char* argv[]) {
   mergeSort(randArr, temp, ASIZE);
  
   if(argc>=2) {
-    printf("random_elem:%d\n", randArr[0+argc]);
-    printf("random_elem:%d\n", randArr[1+argc]);
-    printf("random_elem:%d\n", randArr[2+argc]);
+    printf("random_elem:%d, %s\n", randArr[1+argc],argv[0]);
   }
 }

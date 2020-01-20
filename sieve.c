@@ -25,8 +25,8 @@ int sieve(int n)  {
 int main(int argc, char**argv) {
   int total = sieve(1000000);
 
-  if(argc=2) {
-    printf("sieve:%d\n", total);
+  if(argc==2) {
+    printf("sieve:%s %d\n", argv[0], total);
   }
 
   return 0;
