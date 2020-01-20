@@ -31,6 +31,7 @@ void mm() {
 
 int main(int argc, char**argv) {
   mm();  
+
   if(argc>=2) {
     printf("random result:%f, %s\n", prod[argc],argv[0]);
   }

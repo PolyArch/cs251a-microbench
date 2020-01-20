@@ -6,10 +6,10 @@ import sys
 import numpy as np
 
 parser = argparse.ArgumentParser(description='Generate random arrays for spmv')
-parser.add_argument('-r','--rows', default=2048, type=int, help='Number of Rows')
-parser.add_argument('-c','--cols', default=2048, type=int, help='Number of Cols')
+parser.add_argument('-r','--rows', default=8192, type=int, help='Number of Rows')
+parser.add_argument('-c','--cols', default=65536, type=int, help='Number of Cols')
 parser.add_argument('-e','--avg_elem_per_row', default=64, type=int, help='Elements in each row')
-parser.add_argument('-s','--dev_elem_per_row', default=16, type=int, help='Elements in each row')
+parser.add_argument('-s','--dev_elem_per_row', default=32, type=int, help='Elements in each row')
 
 parser.add_argument('-v','--range', default=96, type=int, help='Upper Bound on Random Value -- 2 for Binary')
 parser.add_argument('-d', '--data_type', default='float')
@@ -49,7 +49,7 @@ out_file.write("};\n\n")
 out_file.write("int cols[] = {\n")
 for i in range(1,len(elem_per_row)):
   num_elem_in_row=elem_per_row[i]
-  samples = random.sample(range(0,args.cols),num_elem_in_row)
+  samples = random.sample(xrange(0,args.cols),num_elem_in_row)
   samples.sort()
   
   for j,val in enumerate(samples):
@@ -83,31 +83,4 @@ for i in range(0,args.cols):
     out_file.write("\n")
 
 out_file.write("};\n\n")
-
-
-
-
-
-
-#for i in range(0,args.len):
-#  if args.non_random:
-#    out_file.write(str(i%args.range))
-#  else:
-#    out_file.write(str(random.randint(0,args.range-1)))
-#  
-#  if i!=args.len-1:
-#    out_file.write(",")
-#
-#  if args.range<=9:
-#    if  i % 64 == 63:
-#      out_file.write("\n")
-#  elif args.range<=99:
-#    if  i % 32 == 31:
-#      out_file.write("\n")
-#  else :
-#    if i % 16 == 15:
-#      out_file.write("\n")
-#
-#
-#out_file.write("};")
 
