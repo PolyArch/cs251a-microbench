@@ -12,7 +12,6 @@ void spmv(float val[NNZ], int cols[NNZ], int rowDelim[N_ROWS+1], float vec[N_COL
     for (j = tmp_begin; j < tmp_end; j++){
         Si = val[j] * vec[cols[j]];
         sum = sum + Si;
-        total+=1;
     }
     (*out)[i] += sum;
   }

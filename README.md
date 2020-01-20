@@ -6,15 +6,20 @@ Note that some of the benchmarks do something useful, but others do not.  The
 beauty of microbenchmarks is that they don't have to be meaningful, just evoke
 interesting behavior in the microarchitecture.
 
-# Build Instructions:
-
-To compile, just use gcc.  They don't have any command line options when running.
-
 # Input Generation
 
-One of the benchmarks requires a random array (randArr.h) to be used as an input.  Lets use the following dataset:
+Two of the benchmarks requires a random array (randArr.h and spmvArr.h) to be used as an input.  Run this command to run the generation scripts.  (you can also look at the python scripts to generate your own kind of arrays)
 
 ```
-python rand_c_arr.py --len=8192 --range=1000000
+make gen_array
 ```
+
+# Build Instructions:
+
+Make all the benchmarks with the following command:
+
+```
+make
+```
+
 

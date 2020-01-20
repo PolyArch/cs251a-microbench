@@ -1,4 +1,6 @@
-CFLAGS   = -std=gnu11 -O3 -Wall -Wextra -Wpedantic -Wstrict-aliasing -static
+OPT ?= -O3
+
+CFLAGS   = -std=gnu11 $(OPT) -Wall -Wextra -Wpedantic -Wstrict-aliasing -static
 
 EXEC=lfsr merge mm sieve spmv
 
