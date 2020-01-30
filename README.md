@@ -11,7 +11,7 @@ interesting behavior in the microarchitecture.
 Two of the benchmarks requires a random array (randArr.h and spmvArr.h) to be used as an input.  Run this command to run the generation scripts.  (you can also look at the python scripts to generate your own kind of arrays)
 
 ```
-make gen_array
+make gen_arr
 ```
 
 # Build Instructions:
