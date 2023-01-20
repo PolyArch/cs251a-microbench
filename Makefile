@@ -6,12 +6,18 @@ EXEC=lfsr merge mm sieve spmv
 
 all: $(EXEC)
 
-%: %.c *.h
+%: %.c randArr.h spmvArr.h
 	$(CC) -o $@ $< $(CFLAGS)
 
+randArr.h:
+	python rand_c_arr.py --len=8192 --range=1000000
+
+spmvArr.h:
+	python rand_spmv_arrs.py
+	
 clean: 
 	@rm -f $(EXEC)
 
-gen_arr:
-	python rand_c_arr.py --len=8192 --range=1000000
-	python rand_spmv_arrs.py
+cleanall: clean
+	@rm randArr.h spmvArr.h
+
