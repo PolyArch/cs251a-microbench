@@ -49,7 +49,7 @@ out_file.write("};\n\n")
 out_file.write("int cols[] = {\n")
 for i in range(1,len(elem_per_row)):
   num_elem_in_row=elem_per_row[i]
-  samples = random.sample(xrange(0,args.cols),num_elem_in_row)
+  samples = random.sample(range(0,args.cols),num_elem_in_row)
   samples.sort()
   
   for j,val in enumerate(samples):
