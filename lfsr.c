@@ -1,19 +1,24 @@
 #include <stdio.h>
-#include <stdlib.h>     /* malloc, free, rand */
+#include <stdlib.h> 
 
 #define ASIZE  65536
 #define ITERS  1000000
+
+/* LFSR: Linear Feedback Shift Register
+ * This workload generates essentially random accesses to a somewhat large array
+ * of size ASIZE*32 Bytes.  It doesn't do anything useful. : )
+ */
+
 
 typedef struct silly_struct {
   int p1,p2,p3,p4,p5,p6,p7,p8;
 } silly_struct;
 
-
 silly_struct arr[ASIZE];
 
 __attribute__ ((noinline))
-int lfsr_loop(int zero) {
-  int result = zero, count=zero;
+int lfsr_loop(int val) {
+  int result = val, count=val;
 
   unsigned lfsr = 0xACE1u;
   do {
@@ -26,11 +31,10 @@ int lfsr_loop(int zero) {
   return result;
 }
 
-
 int main(int argc, char* argv[]) {
-   int t=lfsr_loop(argc); 
+   int result=lfsr_loop(argc^(int)argv[0][0]); 
 
-   if(argc >=2) {
-     printf("value of t: %d, %s\n",t, argv[0]);
+   if(argc>=2 && result!=0) {
+     printf("result: %d\n", result);
    }
 }
